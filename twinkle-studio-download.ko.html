@@ -90,6 +90,30 @@
   }
   .brand svg { flex: none; }
 
+  .header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .lang-switch a {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    border-radius: 999px;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .lang-switch a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
   /* ---------- Hero ---------- */
   .hero {
     position: relative;
@@ -391,11 +415,16 @@
 
 
 <header class="site">
-  <div class="wrap brand">
-    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 2L14.2 9.2L21 12L14.2 14.8L12 22L9.8 14.8L3 12L9.8 9.2L12 2Z" fill="currentColor"/>
-    </svg>
-    Twinkle Studio
+  <div class="wrap header-row">
+    <div class="brand">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2L14.2 9.2L21 12L14.2 14.8L12 22L9.8 14.8L3 12L9.8 9.2L12 2Z" fill="currentColor"/>
+      </svg>
+      Twinkle Studio
+    </div>
+    <nav class="lang-switch">
+      <a href="twinkle-studio-download.html">English</a>
+    </nav>
   </div>
 </header>
 

@@ -90,6 +90,30 @@
   }
   .brand svg { flex: none; }
 
+  .header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .lang-switch a {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    border-radius: 999px;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .lang-switch a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
   /* ---------- Hero ---------- */
   .hero {
     position: relative;
@@ -341,6 +365,15 @@
   ol.mini-steps p { margin: 0; color: var(--text-muted); font-size: 0.88rem; }
   ol.mini-steps code { background: var(--surface); padding: 1px 6px; border-radius: 5px; font-size: 0.85em; }
 
+  .step-img {
+    display: block;
+    max-width: 100%;
+    width: 340px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+  }
+
   .link-card {
     display: inline-flex;
     align-items: center;
@@ -382,11 +415,16 @@
 
 
 <header class="site">
-  <div class="wrap brand">
-    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 2L14.2 9.2L21 12L14.2 14.8L12 22L9.8 14.8L3 12L9.8 9.2L12 2Z" fill="currentColor"/>
-    </svg>
-    Twinkle Studio
+  <div class="wrap header-row">
+    <div class="brand">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2L14.2 9.2L21 12L14.2 14.8L12 22L9.8 14.8L3 12L9.8 9.2L12 2Z" fill="currentColor"/>
+      </svg>
+      Twinkle Studio
+    </div>
+    <nav class="lang-switch">
+      <a href="twinkle-studio-download.ko.html">한국어</a>
+    </nav>
   </div>
 </header>
 
@@ -521,6 +559,7 @@
         <div>
           <h4>Plug in your USBasp and start Lesson 1</h4>
           <p>Connect the USBasp programmer, wire up an LED as shown in Lesson 1, and hit Flash to Chip.</p>
+          <img class="step-img" src="images/usbasp-connected.jpg" alt="USBasp programmer connected to the ATtiny85 board via the 6-pin ribbon cable">
         </div>
       </li>
     </ol>
@@ -611,6 +650,7 @@
         <div>
           <h4>Plug in your USBasp and start Lesson 1</h4>
           <p>Once the driver's installed, reopen Twinkle Studio, wire up an LED as shown in Lesson 1, and hit Flash to Chip.</p>
+          <img class="step-img" src="images/usbasp-connected.jpg" alt="USBasp programmer connected to the ATtiny85 board via the 6-pin ribbon cable">
         </div>
       </li>
     </ol>
