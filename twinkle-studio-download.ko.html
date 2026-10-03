@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Twinkle Studio — 다운로드</title>
+<meta name="description" content="ATtiny85 칩에 실제로 코드를 올릴 수 있도록 Twinkle Studio를 다운로드하세요.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --surface: #FFFFFF;
+    --surface-2: #FFFFFF;
+    --text: #14213D;
+    --text-muted: #55647D;
+    --accent: #386FB2;
+    --accent-ink: #FFFFFF;
+    --accent-soft: #FFFFFF;
+    --border: #D7E3F1;
+    --radius: 16px;
+    color-scheme: light;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F1B2E;
+      --surface: #16263D;
+      --surface-2: #1C2E4A;
+      --text: #EAF1FB;
+      --text-muted: #93A6C2;
+      --accent: #6FA0DC;
+      --accent-ink: #0B1626;
+      --accent-soft: #1E3350;
+      --border: #274064;
+      color-scheme: dark;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #0F1B2E;
+    --surface: #16263D;
+    --surface-2: #1C2E4A;
+    --text: #EAF1FB;
+    --text-muted: #93A6C2;
+    --accent: #6FA0DC;
+    --accent-ink: #0B1626;
+    --accent-soft: #1E3350;
+    --border: #274064;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+
+  h1, h2, h3 { font-family: 'Baloo 2', system-ui, sans-serif; text-wrap: balance; margin: 0; }
+  code, .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+  a { color: var(--accent); }
+
+  .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding-inline: 20px;
+  }
+
+  /* ---------- Header ---------- */
+  header.site {
+    padding-block: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Baloo 2', system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--accent);
+  }
+  .brand svg { flex: none; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding-block: 56px 40px;
+    background: var(--bg);
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+  }
+  .starfield {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .starfield span {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0.45;
+    animation: twinkle 2.6s ease-in-out infinite;
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.15; transform: scale(0.8); }
+    50% { opacity: 0.8; transform: scale(1.15); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .starfield span { animation: none; opacity: 0.35; }
+  }
+  .hero-inner { position: relative; z-index: 1; }
+  h1.headline {
+    font-size: clamp(2rem, 5vw, 3.1rem);
+    font-weight: 800;
+    line-height: 1.08;
+    max-width: 16ch;
+    color: var(--text);
+  }
+  .sub {
+    margin-top: 16px;
+    max-width: 56ch;
+    font-size: 1.08rem;
+    color: var(--text-muted);
+  }
+
+  /* ---------- Download cards ---------- */
+  .downloads {
+    margin-top: 36px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 640px) {
+    .downloads { grid-template-columns: 1fr; }
+  }
+  .dl-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    box-shadow: 0 1px 3px rgba(20, 33, 61, 0.06);
+  }
+  .dl-top { display: flex; align-items: center; gap: 12px; }
+  .dl-icon {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    flex: none;
+    background: var(--accent-soft);
+    border: 1px solid var(--border);
+    color: var(--accent);
+  }
+  .dl-name { font-family: 'Baloo 2', system-ui, sans-serif; font-weight: 700; font-size: 1.05rem; color: var(--text); }
+  .dl-req { font-size: 0.85rem; color: var(--text-muted); }
+  .dl-meta {
+    display: flex; gap: 14px; font-size: 0.82rem; color: var(--text-muted);
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.98rem;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.08s ease, filter 0.15s ease;
+    background: var(--accent);
+    color: var(--accent-ink);
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn:hover { filter: brightness(1.08); }
+  .btn-note {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+
+  /* ---------- Sections ---------- */
+  section { padding-block: 44px; }
+  .section-head { max-width: 60ch; margin-bottom: 28px; }
+  .section-head .kicker {
+    font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--accent);
+  }
+  .section-head h2 { font-size: clamp(1.5rem, 3vw, 2rem); margin-top: 6px; font-weight: 700; }
+  .section-head p { color: var(--text-muted); margin-top: 8px; }
+
+  /* Feature grid */
+  .features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  @media (max-width: 720px) {
+    .features { grid-template-columns: 1fr; }
+  }
+  .feature {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+  }
+  .feature h3 { font-size: 1.02rem; font-weight: 700; margin-bottom: 8px; }
+  .feature p { font-size: 0.92rem; color: var(--text-muted); margin: 0; }
+  .feature .tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border: 1px solid var(--border);
+    padding: 2px 9px;
+    border-radius: 999px;
+    margin-bottom: 10px;
+  }
+
+  /* Tabs */
+  .tabs {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 22px;
+    border-bottom: 1px solid var(--border);
+  }
+  .tab-btn {
+    background: none;
+    border: none;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    padding: 10px 4px;
+    margin-right: 22px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transform: translateY(1px);
+  }
+  .tab-btn[aria-selected="true"] {
+    color: var(--text);
+    border-bottom-color: var(--accent);
+  }
+
+  ol.steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  ol.steps li {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 14px;
+  }
+  ol.steps .num {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--accent-ink);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    flex: none;
+  }
+  ol.steps h4 { margin: 0 0 4px; font-size: 1rem; font-weight: 700; font-family: 'Inter', system-ui, sans-serif; }
+  ol.steps p { margin: 0; color: var(--text-muted); font-size: 0.93rem; }
+  ol.steps .callout {
+    margin-top: 8px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 0.87rem;
+    color: var(--text);
+  }
+  ol.steps .callout strong { color: var(--accent); }
+
+  /* Driver sub-panel (Windows) */
+  .driver-box {
+    margin-top: 6px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 22px;
+  }
+  .driver-box h4 {
+    font-family: 'Baloo 2', system-ui, sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0 0 4px;
+  }
+  .driver-box > p.lead {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin: 0 0 16px;
+  }
+  ol.mini-steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  ol.mini-steps li {
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    gap: 12px;
+  }
+  ol.mini-steps .num {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--accent-ink);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+    font-size: 0.78rem;
+    flex: none;
+  }
+  ol.mini-steps h5 { margin: 0 0 2px; font-size: 0.93rem; font-weight: 700; }
+  ol.mini-steps p { margin: 0; color: var(--text-muted); font-size: 0.88rem; }
+  ol.mini-steps code { background: var(--surface); padding: 1px 6px; border-radius: 5px; font-size: 0.85em; }
+
+  .step-img {
+    display: block;
+    max-width: 100%;
+    width: 340px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+  }
+
+  .link-card {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  footer.site {
+    border-top: 1px solid var(--border);
+    padding-block: 26px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+</style>
+</head>
+<body>
+<!--
+  ============================================================
+  새 버전을 출시할 때 이 부분을 수정하세요.
+  아래에 각 플랫폼 zip 파일의 다운로드 링크를 붙여넣으면 됩니다 —
+  수정이 필요한 곳은 여기뿐입니다. 아래쪽의 두 다운로드 버튼이
+  이 값을 자동으로 사용합니다.
+  ============================================================
+-->
+<script>
+  const DOWNLOAD_LINKS = {
+    mac: "https://github.com/twinkletree/twinkle-studio/releases/latest/download/twinkle-studio-mac.zip",
+    windows: "https://github.com/twinkletree/twinkle-studio/releases/latest/download/twinkle-studio-windows.zip"
+  };
+</script>
+
+
+<header class="site">
+  <div class="wrap brand">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2L14.2 9.2L21 12L14.2 14.8L12 22L9.8 14.8L3 12L9.8 9.2L12 2Z" fill="currentColor"/>
+    </svg>
+    Twinkle Studio
+  </div>
+</header>
+
+<section class="hero">
+  <div class="starfield" aria-hidden="true">
+    <span style="top:12%; left:8%; animation-delay:0s;"></span>
+    <span style="top:22%; left:80%; animation-delay:0.4s;"></span>
+    <span style="top:60%; left:92%; animation-delay:0.9s;"></span>
+    <span style="top:75%; left:15%; animation-delay:1.3s;"></span>
+    <span style="top:40%; left:45%; animation-delay:0.7s;"></span>
+    <span style="top:85%; left:60%; animation-delay:1.8s;"></span>
+    <span style="top:8%; left:55%; animation-delay:2.1s;"></span>
+  </div>
+  <div class="wrap hero-inner">
+    <h1 class="headline">진짜 칩에 불을 켜며 코딩을 배워보세요.</h1>
+    <p class="sub">Twinkle Studio는 실제로 작동하는 초소형 마이크로컨트롤러, ATtiny85를 기반으로 만든 초보자 친화적인 코딩 앱입니다. 블록을 끌어다 놓거나, 파이썬 코드를 작성하거나, 원하는 동작을 평범한 말로 설명해보세요. 그런 다음 실제 하드웨어에 업로드하고 직접 작동하는 모습을 확인할 수 있습니다.</p>
+
+    <div class="downloads">
+      <div class="dl-card">
+        <div class="dl-top">
+          <div class="dl-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M16.7 12.7c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.1 2.5-1.8 3.1-.5 7.6 1.3 10.1.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8s2 .8 3.3.8c1.4 0 2.3-1.2 3.1-2.5.7-1 1.1-2 1.3-2.6-3.2-1.2-2.7-3.9-2.7-4.2zM14 4.9c.7-.8 1.1-2 1-3.1-1 .1-2.2.7-2.9 1.5-.6.7-1.1 1.8-1 2.9 1.1.1 2.2-.5 2.9-1.3z"/></svg>
+          </div>
+          <div>
+            <div class="dl-name">macOS</div>
+            <div class="dl-req">Apple Silicon(M1/M2/M3) · macOS 11 이상</div>
+          </div>
+        </div>
+        <div class="dl-meta">
+          <span>v0.1.0</span>
+          <span>업데이트: 2026년 9월 25일</span>
+        </div>
+        <a class="btn" id="macDownloadBtn" href="#" download="twinkle-studio-mac.zip">
+          ⬇ macOS용 다운로드
+        </a>
+        <div class="btn-note">.zip · 압축을 풀고 앱을 여세요</div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-top">
+          <div class="dl-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.5L10.5 4.4V11.4H3V5.5ZM11.4 4.3L21 3V11.3H11.4V4.3ZM3 12.4H10.5V19.5L3 18.4V12.4ZM11.4 12.4H21V20.9L11.4 19.6V12.4Z"/></svg>
+          </div>
+          <div>
+            <div class="dl-name">Windows</div>
+            <div class="dl-req">Windows 10 또는 11 · 64비트</div>
+          </div>
+        </div>
+        <div class="dl-meta">
+          <span>v0.1.0</span>
+          <span>업데이트: 2026년 9월 26일</span>
+        </div>
+        <a class="btn" id="winDownloadBtn" href="#" download="twinkle-studio-windows.zip">
+          ⬇ Windows용 다운로드
+        </a>
+        <div class="btn-note">.zip · 설치 프로그램 필요 없음</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="section-head">
+    <div class="kicker">구성 요소</div>
+    <h2>세 가지 방법, 그 아래엔 하나의 진짜 칩.</h2>
+    <p>어떤 모드를 선택하든 동일한 펌웨어로 컴파일되어 같은 ATtiny85 칩에 업로드됩니다 — 시뮬레이션이 아닌 실제 동작입니다.</p>
+  </div>
+  <div class="features">
+    <div class="feature">
+      <span class="tag">8세 이상</span>
+      <h3>드래그 앤 드롭 블록</h3>
+      <p>핀, 반복문, 타이머 블록을 끼워 맞추세요. 타이핑이 필요 없어 첫 수업에 안성맞춤입니다.</p>
+    </div>
+    <div class="feature">
+      <span class="tag">11세 이상</span>
+      <h3>파이썬 모드</h3>
+      <p>변수, 반복문, 함수 등 실제 파이썬의 일부 문법을 사용할 수 있으며, 곧바로 C로 변환되어 칩용으로 컴파일됩니다.</p>
+    </div>
+    <div class="feature">
+      <span class="tag">가이드 제공</span>
+      <h3>AI 모드</h3>
+      <p>원하는 동작을 평범한 말로 설명해보세요. 생성된 코드는 칩에 업로드되기 전에 항상 먼저 화면에 표시됩니다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="section-head">
+    <div class="kicker">설치 방법</div>
+    <h2>몇 분이면 설정 완료</h2>
+    <p>사용하시는 운영체제를 선택하세요. Homebrew나 Xcode 등을 미리 설치할 필요가 전혀 없습니다 — 필요한 시점에 앱이 자동으로 컴파일러 도구를 설치합니다.</p>
+  </div>
+
+  <div class="tabs" role="tablist">
+    <button class="tab-btn" role="tab" id="tab-mac" aria-selected="true" aria-controls="panel-mac">macOS</button>
+    <button class="tab-btn" role="tab" id="tab-win" aria-selected="false" aria-controls="panel-win">Windows</button>
+  </div>
+
+  <div id="panel-mac" role="tabpanel" aria-labelledby="tab-mac">
+    <ol class="steps">
+      <li>
+        <div class="num">1</div>
+        <div>
+          <h4>다운로드 후 압축 풀기</h4>
+          <p>위에서 macOS용 .zip 파일을 다운로드한 다음 더블클릭하세요. 그러면 <span class="mono">Twinkle Studio.app</span> 파일이 생성됩니다.</p>
+        </div>
+      </li>
+      <li>
+        <div class="num">2</div>
+        <div>
+          <h4>Applications 폴더로 이동 (선택 사항)</h4>
+          <p>앱을 Applications 폴더로 끌어다 놓거나, 편한 위치에 그대로 두고 더블클릭해서 열어도 됩니다.</p>
+        </div>
+      </li>
+      <li>
+        <div class="num">3</div>
+        <div>
+          <h4>처음 실행하기</h4>
+          <p>macOS에서 "확인되지 않은 개발자"의 앱이라는 메시지가 뜰 수 있습니다 — 소규모 독립 개발 앱에서는 흔히 있는 일입니다.</p>
+          <div class="callout"><strong>해결 방법:</strong> 앱을 마우스 오른쪽 버튼(또는 Control 키를 누른 채)으로 클릭하고 <em>열기</em>를 선택한 다음, 나타나는 대화상자에서 다시 한 번 <em>열기</em>를 클릭하세요. 이 과정은 처음 한 번만 하면 됩니다.</div>
+        </div>
+      </li>
+      <li>
+        <div class="num">4</div>
+        <div>
+          <h4>컴파일러 자동 설치</h4>
+          <p>프로그램을 처음 업로드하려고 하면 Twinkle Studio가 AVR 컴파일러 도구를 자동으로 다운로드하고 설치해 줍니다 — 별도의 설치 과정이 필요 없습니다.</p>
+        </div>
+      </li>
+      <li>
+        <div class="num">5</div>
+        <div>
+          <h4>USBasp를 연결하고 1강 시작하기</h4>
+          <p>USBasp 프로그래머를 연결하고, 1강에서 안내하는 대로 LED를 배선한 다음 '칩에 업로드'를 눌러보세요.</p>
+          <img class="step-img" src="images/usbasp-connected.jpg" alt="6핀 리본 케이블로 ATtiny85 보드에 연결된 USBasp 프로그래머">
+        </div>
+      </li>
+    </ol>
+  </div>
+
+  <div id="panel-win" role="tabpanel" aria-labelledby="tab-win" hidden>
+    <ol class="steps">
+      <li>
+        <div class="num">1</div>
+        <div>
+          <h4>zip 파일 다운로드</h4>
+          <p>위에서 Windows용 .zip 파일을 다운로드하세요. 이것은 설치 프로그램이 아니라 일반 압축 파일이며, 직접 앱을 열기 전까지는 아무것도 실행되지 않습니다.</p>
+        </div>
+      </li>
+      <li>
+        <div class="num">2</div>
+        <div>
+          <h4>압축을 완전히 풀기</h4>
+          <p>다운로드한 파일을 마우스 오른쪽 버튼으로 클릭하고 <em>압축 풀기</em>를 선택하세요. 압축 파일 안에서 바로 앱을 실행하지 말고, 먼저 압축부터 풀어주세요.</p>
+        </div>
+      </li>
+      <li>
+        <div class="num">3</div>
+        <div>
+          <h4>앱 실행하기</h4>
+          <p>압축을 푼 <span class="mono">win-unpacked</span> 폴더를 열고 <span class="mono">Twinkle Studio.exe</span>를 더블클릭하세요.</p>
+        </div>
+      </li>
+      <li>
+        <div class="num">4</div>
+        <div>
+          <h4>보안 경고 화면 넘기기</h4>
+          <p>이 앱은 등록된 게시자의 것이 아니기 때문에 Windows에서 파란색 "Windows에서 PC를 보호했습니다" 화면이 나타날 수 있습니다.</p>
+          <div class="callout"><strong>해결 방법:</strong> <em>추가 정보</em>를 클릭한 다음 <em>실행</em>을 클릭하세요. 이 과정은 처음 한 번만 하면 됩니다.</div>
+        </div>
+      </li>
+      <li>
+        <div class="num">5</div>
+        <div>
+          <h4>컴파일러 자동 설치</h4>
+          <p>프로그램을 처음 업로드하려고 하면 Twinkle Studio가 AVR 컴파일러 도구를 자동으로 다운로드하고 설치해 줍니다.</p>
+        </div>
+      </li>
+      <li>
+        <div class="num">6</div>
+        <div>
+          <h4>USBasp 드라이버 설치하기</h4>
+          <p>Windows에는 USBasp 프로그래머용 드라이버가 기본으로 포함되어 있지 않아서, Zadig라는 무료 도구를 사용해 한 번만 드라이버를 설치해주어야 합니다.</p>
+
+          <div class="driver-box">
+            <h4>Zadig로 드라이버 설치하기</h4>
+            <p class="lead">컴퓨터당 한 번, 약 2분 정도 걸립니다. 먼저 USBasp를 연결하세요.</p>
+            <ol class="mini-steps">
+              <li>
+                <div class="num">1</div>
+                <div>
+                  <h5>Zadig 다운로드 및 실행</h5>
+                  <p><a class="link-card" href="https://zadig.akeo.ie/" target="_blank" rel="noopener">zadig.akeo.ie</a>에서 무료로 다운로드한 후 <code>zadig-2.9.exe</code>를 더블클릭하세요. Zadig는 유료 인증서가 없기 때문에 Windows에서 SmartScreen 경고가 뜰 수 있습니다 — <strong>추가 정보 → 실행</strong>을 클릭하세요. 정상적인 현상입니다.</p>
+                </div>
+              </li>
+              <li>
+                <div class="num">2</div>
+                <div>
+                  <h5>모든 장치 표시하기</h5>
+                  <p>메뉴 바에서 <strong>Options</strong>를 열고 <strong>List All Devices</strong>를 켜세요 — 그렇지 않으면 USBasp가 보통 숨겨져 있습니다.</p>
+                </div>
+              </li>
+              <li>
+                <div class="num">3</div>
+                <div>
+                  <h5>USBasp 선택하기</h5>
+                  <p>상단의 드롭다운 메뉴를 클릭하고 <strong>USBasp</strong>라는 항목을 선택하세요. 이름 없는 장치가 여러 개 나타난다면, 프로그래머를 뽑았다 다시 꽂아보면서 어느 항목이 바뀌는지 확인해보세요.</p>
+                </div>
+              </li>
+              <li>
+                <div class="num">4</div>
+                <div>
+                  <h5>드라이버 설치하기</h5>
+                  <p>오른쪽 상자 옆의 화살표를 눌러 <strong>libusb-win32</strong>가 표시될 때까지 변경한 다음 <strong>Install Driver</strong>를 클릭하세요. 몇 초 후 완료 메시지가 나타나면 Zadig를 닫아도 됩니다.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="num">7</div>
+        <div>
+          <h4>USBasp를 연결하고 1강 시작하기</h4>
+          <p>드라이버 설치가 끝나면 Twinkle Studio를 다시 열고, 1강에서 안내하는 대로 LED를 배선한 다음 '칩에 업로드'를 눌러보세요.</p>
+          <img class="step-img" src="images/usbasp-connected.jpg" alt="6핀 리본 케이블로 ATtiny85 보드에 연결된 USBasp 프로그래머">
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; width:100%;">
+    <span>Twinkle Studio · v0.1.0</span>
+    <span>Twinkle Tree 프로젝트의 일부입니다</span>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var tabs = [
+      { btn: document.getElementById('tab-mac'), panel: document.getElementById('panel-mac') },
+      { btn: document.getElementById('tab-win'), panel: document.getElementById('panel-win') }
+    ];
+    tabs.forEach(function (t) {
+      t.btn.addEventListener('click', function () {
+        tabs.forEach(function (o) {
+          var active = o === t;
+          o.btn.setAttribute('aria-selected', active ? 'true' : 'false');
+          o.panel.hidden = !active;
+        });
+      });
+    });
+  })();
+</script>
+
+<script>
+  // 위 두 버튼을 이 파일 상단의 DOWNLOAD_LINKS 설정과 연결합니다.
+  document.getElementById('macDownloadBtn').href = DOWNLOAD_LINKS.mac;
+  document.getElementById('winDownloadBtn').href = DOWNLOAD_LINKS.windows;
+</script>
+</body>
+</html>
